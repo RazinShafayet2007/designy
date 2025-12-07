@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/theme/provider";
 import { Toaster } from "sonner";
-import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs";
+import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import { ConvexClientProvider } from "@/convex/provider";
 
 

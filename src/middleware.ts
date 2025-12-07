@@ -1,6 +1,7 @@
 import { convexAuthNextjsMiddleware, createRouteMatcher, nextjsMiddlewareRedirect } from "@convex-dev/auth/nextjs/server";
 import { isBypassRoutes } from "./lib/permissions";
 import { isPublicRoutes } from "./lib/permissions";
+import { isProtectedRoutes } from "./lib/permissions";
 
 
 const BypassMatcher = createRouteMatcher(isBypassRoutes);
