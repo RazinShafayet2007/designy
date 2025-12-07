@@ -4,3 +4,7 @@ export const isBypassRoutes = [
     "/api/auth(.*)",
     "/convex(.*)",
 ];
+
+export const isPublicRoutes = ['/auth(.*)', '/'];
+
+export const isProtectedRoutes = ['/dashboard(.*)'];
