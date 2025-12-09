@@ -1,6 +1,8 @@
+import { combinedSlug } from "@/lib/utils"
+
 export type ConvexUserRaw = {
     _creationTime: number
-    id: string
+    _id: string
     email: string
     emailVerificationTime: number
     image?: string
@@ -20,5 +22,23 @@ export const normalizeProfile = (
     raw: ConvexUserRaw | null
 ): Profile | null => {
     if (!raw) return null
-    //Need to write more necessary functionalities (eg. username, name etc.)
+
+    const extractNameFromEmail = (email: string): string => {
+        const username = email.split('@')[0];
+        return username
+           .split(/[._-]/)
+           .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+           .join(' ');
+    }
+
+    const name = combinedSlug(raw.name!) || extractNameFromEmail(raw.email);
+
+    return {
+        id: raw._id,
+        createdAtMs: raw._creationTime,
+        email: raw.email,
+        emailVerifiedAtMs: raw.emailVerificationTime,
+        image: raw.image,
+        name,
+    }
 }
